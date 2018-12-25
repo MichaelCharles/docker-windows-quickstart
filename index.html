@@ -25,7 +25,7 @@
     <!-- Facebook -->
     <meta property="og:title" content="Docker Commands I Actually Use" />
     <meta property="og:type" content="article" />
-    <meta property="og:image" content="./img/collage.jpg" />
+    <meta property="og:image" content="./docker-screenshot.png" />
     <meta
       property="og:description"
       content="A list of Docker and Docker Compose commands that I actually use on a daily basis."
@@ -38,21 +38,11 @@
       name="twitter:description"
       content="A list of Docker and Docker Compose commands that I actually use on a daily basis."
     />
-    <meta name="twitter:image" content="./img/collage.jpg" />
+    <meta name="twitter:image" content="./docker-screenshot.png" />
 
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://mcaubrey.github.io/RictyDiminished/fonts.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
-      crossorigin="anonymous"
     />
     <style>
       .flex-w-1 {
@@ -67,16 +57,28 @@
       }
       .flex-entry {
         flex: 1;
-        font-family: "Ricty Diminished", monospace;
+        font-family: monospace;
         font-size: 16px;
         line-height: 2;
       }
       .flex-definition {
         flex: 1;
-        font-family: "futura-pt", "Noto Sans", sans-serif;
+        font-family: "Noto Sans", sans-serif;
+        font-size: 14px;
       }
       .row {
-        border-bottom: 1px solid rgba(33, 33, 33, 0.3);
+        border-bottom: 1px solid rgba(33, 33, 33, 0.15);
+        align-items: center;
+      }
+      .row:last-child {
+        border-bottom: none;
+      }
+      a {
+        color: blueviolet;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
       }
     </style>
   </head>
@@ -85,6 +87,7 @@
       class="container mx-auto bg-white shadow text-grey-darkest m-6 p-4 rounded"
     >
       <h1 class="mb-4">Docker Commands I Actually Use</h1>
+      <p class="mb-4">These are the Docker and Docker Compose commands that I actually use on a daily basis along with a short description of what they do. See the <a href="https://github.com/mcaubrey/docker-windows-quickstart" target="_blank">Docker Windows Quickstart</a> repository for a skeleton Docker Compose setup to get you started.</p>
       <div>
         <div class="flex font-bold">
           <div class="flex-w-1">Command</div>
@@ -189,6 +192,10 @@
           {
             entry: "docker image prune -a",
             description: "Removes all images."
+          },
+          {
+            entry: "docker exec -it <name-or-hash> bash",
+            description: "Runs the last argument as a command within the container. Since that argument is \"bash\", this will let you look around inside the container and run other commands there. As with all container related commands, you can use either the container name or a distinguishing part of its hash."
           }
         ]
       }

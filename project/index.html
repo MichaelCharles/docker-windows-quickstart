@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="shortcut icon" href="https://res.cloudinary.com/mca62511/image/upload/c_scale,w_64/v1545712407/Docker_ouqfjb.ico" type="image/x-icon">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Docker Commands I Actually Use</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mcaubrey.github.io/RictyDiminished/fonts.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+    <style>
+      .flex-w-1 {
+        flex: 1;
+      }
+      .flex-w-2 {
+        flex: 2;
+      }
+      .flex-entry,
+      .flex-definition {
+        padding: .5em 0;
+      }
+      .flex-entry {
+        flex: 1;
+        font-family: "Ricty Diminished", monospace;
+        font-size: 16px;
+        line-height: 2;
+        
+      }
+      .flex-definition {
+        flex: 1;
+        font-family: "futura-pt", "Noto Sans", sans-serif;
+      }
+      .row {
+        border-bottom: 1px solid rgba(33,33,33,0.3);
+      }
+    </style>
+  </head>
+  <body class="bg-grey-light">
+    <div
+      class="container mx-auto bg-white shadow text-grey-darkest m-6 p-4 rounded"
+    >
+      <h1 class="mb-4">Docker Commands I Actually Use</h1>
+      <div>
+        <div class="flex font-bold">
+          <div class="flex-w-1">Command</div>
+          <div class="flex-w-1">Description</div>
+        </div>
+        <div id="list">
+          <div v-for="command in commands" class="flex row">
+            <div class="flex-entry">{{command.entry}}</div>
+            <div class="flex-definition">
+                {{command.description}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+  </body>
+  <script>
+const list = new Vue({
+  el: '#list',
+  data: {
+    commands: [{
+      entry: "docker-machine start",
+      description: "Starts the virtual machine used by Docker. Run this before running any other Docker commands."
+    },
+    {
+      entry: "docker-machine stop",
+      description: "Stops the virtual machine used by Docker. Run this when you are no longer using Docker."
+    },
+    {
+      entry: "docker-compose up -d",
+      description: "This starts containers based on the parameters set in the docker-compose.yml file found in either the current directory or one of its parent directories. The -d flag specifies \"detached mode\" which means you won't see the output of the services being run."
+    },
+    {
+      entry: "docker-compose logs -f",
+      description: "This shows the past and current output of all currently running containers managed by docker-compose. The -f flag stands for \"follow\" and it is what allows you to see current output along with the previous output."
+    },
+    {
+      entry: "docker-compose down",
+      description: "This stops and removes all containers related to the docker-compose.yml file found either in the current directory or one of its parent directories."
+    },
+    {
+      entry: "docker-compose build",
+      description: "This builds containers based on the parameters set in the docker-compose.yml file. This is run automatically the first time that you do \"docker-compose up\", however after that it needs to be run manually. Run this command any time you make a change to the docker-compose.yml file or any of the associated Dockerfile files."
+    },
+    {
+      entry: "docker container ls",
+      description: "Lists all running containers."
+    },
+    {
+      entry: "docker container ls -a",
+      description: "Lists all containers, including stopped containers."
+    },
+    {
+      entry: "docker container stop <name-or-hash>",
+      description: "This stops the specified container. You can either type the container name or enough of its hash to distingiush it from other containers."
+    },
+    {
+      entry: "docker container rm <name-or-hash>",
+      description: "This removes a container. You can only remove containers which have been stopped."
+    },
+    {
+      entry: "docker container prune",
+      description: "Removes all stopped containers."
+    },
+    {
+      entry: "docker volume ls",
+      description: "Lists all volumes managed by Docker. This will not include volumes which are linked to specific local folders on the host machine."
+    },
+    {
+      entry: "docker volume rm <hash>",
+      description: "This removes the specified volume. You must type the full hash."
+    },
+    {
+      entry: "docker volume prune",
+      description: "This removes all volumes which aren't actively being used."
+    },
+    {
+      entry: "docker image ls",
+      description: "Lists all images currently downloaded to your virtual machine."
+    },
+    {
+      entry: "docker image rm <name-or-hash>",
+      description: "Removes the specified docker image. If you use a hash, the full hash must be used."
+    },
+    {
+      entry: "docker image prune",
+      description: "Removes all unused unnamed images."
+    },
+    {
+      entry: "docker image prune -a",
+      description: "Removes all images."
+    }],
+  }
+})
+  </script>
+</html>

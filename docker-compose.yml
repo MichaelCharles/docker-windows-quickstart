@@ -8,7 +8,7 @@ services:
     ports:
       - '80:80'
     volumes:
-      - C:\Users\Docker\S2\env-esportsport\project:/var/www/html
+      - ./docs:/var/www/html
   db:
     image: mysql:5.7
     ports:
@@ -21,6 +21,6 @@ services:
       MYSQL_PASSWORD: 'password'
     volumes:
       - mysql-data:/var/lib/mysql
-      - C:\Users\Docker\S2\env-esportsportsql:/docker-entrypoint-initdb.d
+      - ./sql:/docker-entrypoint-initdb.d
 volumes:
   mysql-data:
